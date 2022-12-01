@@ -26841,6 +26841,11 @@ func (in *RouterInterfaceParameters) DeepCopyInto(out *RouterInterfaceParameters
 		*out = new(string)
 		**out = **in
 	}
+	if in.VPNTunnel2 != nil {
+		in, out := &in.VPNTunnel2, &out.VPNTunnel2
+		*out = new(string)
+		**out = **in
+	}
 	if in.VPNTunnelRef != nil {
 		in, out := &in.VPNTunnelRef, &out.VPNTunnelRef
 		*out = new(v1.Reference)

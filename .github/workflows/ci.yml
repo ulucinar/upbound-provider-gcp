@@ -26,12 +26,31 @@ jobs:
     steps:
       - name: Detect No-op Changes
         id: noop
-        uses: fkirc/skip-duplicate-actions@v2.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          paths_ignore: '["**.md", "**.png", "**.jpg"]'
-          do_not_skip: '["workflow_dispatch", "schedule", "push"]'
+        run: |
+          echo "should_skip=true" >> $GITHUB_OUTPUT
 
+  report-breaking-changes:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Get modified CRDs
+        id: modified-crds
+        uses: tj-actions/changed-files@v34
+        with:
+          files: |
+            package/crds/**
+
+      - name: Report breaking CRD OpenAPI v3 schema changes
+        if: steps.modified-crds.outputs.any_changed == 'true'
+        env:
+          MODIFIED_CRD_LIST: ${{ steps.modified-crds.outputs.all_changed_files }}
+        run: |
+          mkdir -p .cache/tools/linux_x86_64
+          make crddiff
 
   lint:
     runs-on: ubuntu-22.04

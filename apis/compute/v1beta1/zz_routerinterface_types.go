@@ -82,6 +82,9 @@ type RouterInterfaceParameters struct {
 	// +kubebuilder:validation:Optional
 	VPNTunnel *string `json:"vpnTunnel,omitempty" tf:"vpn_tunnel,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	VPNTunnel2 *string `json:"vpnTunnel2,omitempty" tf:"vpn_tunnel2,omitempty"`
+
 	// Reference to a VPNTunnel to populate vpnTunnel.
 	// +kubebuilder:validation:Optional
 	VPNTunnelRef *v1.Reference `json:"vpnTunnelRef,omitempty" tf:"-"`

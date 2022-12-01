@@ -172,6 +172,8 @@ spec:
                       to be created. Only one of vpn_tunnel and interconnect_attachment
                       can be specified.
                     type: string
+                  vpnTunnel2:
+                    type: string
                   vpnTunnelRef:
                     description: Reference to a VPNTunnel to populate vpnTunnel.
                     properties:
