@@ -27,7 +27,7 @@ metadata:
   name: default
 spec:
   forProvider:
-    autoCreateSubnetworks: "false"
+    auto_create_subnetworks: "false"
 
 ---
 
@@ -41,7 +41,7 @@ metadata:
   name: other
 spec:
   forProvider:
-    autoCreateSubnetworks: "false"
+    auto_create_subnetworks: "false"
 
 ---
 

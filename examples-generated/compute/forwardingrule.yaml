@@ -167,7 +167,7 @@ metadata:
   name: ilb-network
 spec:
   forProvider:
-    autoCreateSubnetworks: false
+    auto_create_subnetworks: false
     provider: ${google-beta}
 
 ---

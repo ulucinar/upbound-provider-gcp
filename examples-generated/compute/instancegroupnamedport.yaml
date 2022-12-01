@@ -25,7 +25,7 @@ metadata:
   name: container-network
 spec:
   forProvider:
-    autoCreateSubnetworks: false
+    auto_create_subnetworks: false
 
 ---
 

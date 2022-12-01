@@ -427,6 +427,11 @@ func Configure(p *config.Provider) { //nolint: gocyclo
 	p.AddResourceConfigurator("google_compute_project_metadata_item", func(r *config.Resource) {
 		r.MetaResource.ArgumentDocs["id"] = "an identifier for the resource with format `{{key}}`"
 	})
+	p.AddResourceConfigurator("google_compute_network", func(r *config.Resource) {
+		s := r.TerraformResource.Schema["auto_create_subnetworks"]
+		delete(r.TerraformResource.Schema, "auto_create_subnetworks")
+		r.TerraformResource.Schema["auto_create_subnetworks_broken"] = s
+	})
 }
 
 // InstanceGroupExtractor extracts Instance Group from

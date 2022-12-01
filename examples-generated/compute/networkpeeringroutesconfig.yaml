@@ -29,7 +29,7 @@ metadata:
   name: network-primary
 spec:
   forProvider:
-    autoCreateSubnetworks: "false"
+    auto_create_subnetworks: "false"
 
 ---
 
@@ -43,7 +43,7 @@ metadata:
   name: network-secondary
 spec:
   forProvider:
-    autoCreateSubnetworks: "false"
+    auto_create_subnetworks: "false"
 
 ---
 

@@ -35,7 +35,7 @@ metadata:
   name: network-1
 spec:
   forProvider:
-    autoCreateSubnetworks: false
+    auto_create_subnetworks: false
 
 ---
 
@@ -49,7 +49,7 @@ metadata:
   name: network-2
 spec:
   forProvider:
-    autoCreateSubnetworks: false
+    auto_create_subnetworks: false
 
 ---
 
