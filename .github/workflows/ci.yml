@@ -26,12 +26,31 @@ jobs:
     steps:
       - name: Detect No-op Changes
         id: noop
-        uses: fkirc/skip-duplicate-actions@v2.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          paths_ignore: '["**.md", "**.png", "**.jpg"]'
-          do_not_skip: '["workflow_dispatch", "schedule", "push"]'
+        run: |
+          echo "should_skip=true" >> $GITHUB_OUTPUT
 
+  detect-breaking-changes:
+    id: detect-breaking-changes
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Get changed files in the docs folder
+        id: modified-crds
+        uses: tj-actions/changed-files@v34
+        with:
+          files: |
+            package/crds/**
+
+      - name: Dump changed CRDs
+        if: steps.modified-crds.outputs.any_changed == 'true'
+        run: |
+          for f in ${{ steps.modified-crds.outputs.all_changed_files }}; do
+            echo "${f} was changed"
+          done
 
   lint:
     runs-on: ubuntu-22.04
