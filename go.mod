@@ -142,4 +142,4 @@ require (
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
-replace github.com/upbound/upjet => ../upjet
+replace github.com/upbound/upjet => github.com/ulucinar/upbound-upjet v0.0.0-20230425213018-66268861d0cd
