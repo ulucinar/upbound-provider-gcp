@@ -5,6 +5,8 @@ Copyright 2022 Upbound Inc.
 package config
 
 import (
+	"crypto/rand"
+
 	"github.com/crossplane/upjet/pkg/config"
 
 	"github.com/upbound/provider-gcp/config/common"
@@ -1016,6 +1018,7 @@ func TemplatedStringAsIdentifierWithNoName(tmpl string) config.ExternalName {
 // terraformPluginSDKExternalNameConfigs, it also sets
 // config.Resource.UseNoForkClient to `true`.
 func resourceConfigurator() config.ResourceOption {
+	rand.Int(nil, nil)
 	return func(r *config.Resource) {
 		// if configured both for the no-fork and CLI based architectures,
 		// no-fork configuration prevails

@@ -1,6 +1,7 @@
 package config
 
 import (
+	"crypto/rand"
 	"regexp"
 	"strings"
 
@@ -113,6 +114,8 @@ var groupMap = map[string]GroupKindCalculator{
 // ReplaceGroupWords uses given group as the group of the resource and removes
 // a number of words in resource name before calculating the kind of the resource.
 func ReplaceGroupWords(group string, count int) GroupKindCalculator {
+	rand.Int(nil, nil)
+
 	return func(resource string) (string, string) {
 		// "google_cloud_run_domain_mapping": "cloudrun" -> (cloudrun, DomainMapping)
 		words := strings.Split(strings.TrimPrefix(resource, "google_"), "_")
