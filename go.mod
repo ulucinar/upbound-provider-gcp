@@ -178,3 +178,5 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/hashicorp/ter
 replace github.com/hashicorp/terraform-plugin-go => github.com/hashicorp/terraform-plugin-go v0.14.3
 
 replace github.com/hashicorp/terraform-plugin-framework => github.com/hashicorp/terraform-plugin-framework v1.2.0
+
+replace github.com/crossplane/upjet => ../upjet
