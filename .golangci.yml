@@ -6,15 +6,22 @@ version: "2"
 
 run:
   timeout: 90m
+  concurrency: 1
 
 output:
   formats:
-    colored-line-number: {}
+    text:
+      colors: true
+      print-linter-name: true
+  show-stats: true
 
 formatters:
   enable:
     - goimports
+    - gofmt
   settings:
+    gofmt:
+      simplify: true
     goimports:
       local-prefixes:
         - github.com/upbound/provider-gcp/v2
@@ -22,27 +29,58 @@ formatters:
 linters:
   default: none
   enable:
+    # explicitly enabled
     - govet
     - gocyclo
     - gocritic
     - goconst
-    - prealloc
     - revive
     - staticcheck
     - unconvert
-    - unused
     - misspell
     - nakedret
+    # v1 "bugs" preset
+    - asasalint
+    - asciicheck
+    - bodyclose
+    - contextcheck
+    - durationcheck
+    - errcheck
+    - errchkjson
+    - errorlint
+    - exhaustive
+    - gosec
+    - gosmopolitan
+    - loggercheck
+    - makezero
+    - musttag
+    - nilerr
+    - nilnesserr
+    - noctx
+    - protogetter
+    - reassign
+    - recvcheck
+    - rowserrcheck
+    - spancheck
+    - testifylint
+    - zerologlint
+    # v1 "unused" preset
+    - ineffassign
+    - unparam
+    - unused
 
   settings:
     errcheck:
       check-type-assertions: false
       check-blank: false
-      exclude-files:
-        - fmt:.*,io/ioutil:^Read.*
+      exclude-functions:
+        - io/ioutil.ReadFile
+        - io/ioutil.ReadDir
+        - io/ioutil.ReadAll
 
     govet:
-      check-shadowing: false
+      disable:
+        - shadow
 
     revive:
       confidence: 0.8
@@ -60,19 +98,11 @@ linters:
     lll:
       tab-width: 1
 
-    unused:
-      check-exported: false
-
     unparam:
       check-exported: false
 
     nakedret:
       max-func-lines: 30
-
-    prealloc:
-      simple: true
-      range-loops: true
-      for-loops: false
 
     gocritic:
       enabled-tags:
@@ -85,11 +115,6 @@ linters:
 
   exclusions:
     generated: lax
-    presets:
-      - comments
-      - common-false-positives
-      - legacy
-      - std-error-handling
     rules:
       - path: _test(ing)?\.go
         linters:
@@ -112,6 +137,10 @@ linters:
         linters:
           - staticcheck
 
+      - text: "QF1008:"
+        linters:
+          - staticcheck
+
       - text: "G101:"
         linters:
           - gosec
@@ -121,8 +150,6 @@ linters:
           - gosec
 
 issues:
-  exclude-files:
-    - "zz_\\..+\\.go$"
   new: false
-  max-per-linter: 0
+  max-issues-per-linter: 0
   max-same-issues: 0
