@@ -1,0 +1,389 @@
+# Static package metadata for crank xpkg batch --service-metadata.
+# Cloud vendor is set on the package as meta.upbound.io/cloud_service_vendor (see crossplane.yaml.tmpl).
+# Categories are search facets and may be used to filter the provider package in the Upbound Marketplace.
+# ServiceCategories use the same controlled vocabulary as provider-upjet-aws/package/service-metadata.yaml.
+#
+accesscontextmanager:
+  ServiceCategories:
+  - security
+  - identity-access
+  ServiceDescription: Defines VPC Service Controls perimeters, access levels, and ingress/egress policies to constrain data exfiltration across Google Cloud services. Supports BeyondCorp-style context-aware access.
+activedirectory:
+  ServiceCategories:
+  - identity-access
+  - integration
+  ServiceDescription: Manages Managed Microsoft AD domains, trusts, and peering for hybrid identity. Bridges on-prem AD with GCP workloads needing Kerberos-aware authentication.
+alloydb:
+  ServiceCategories:
+  - database
+  ServiceDescription: Runs AlloyDB for PostgreSQL clusters with columnar engine, HA, and read pools. Targets demanding OLTP and analytics on Postgres-compatible APIs.
+apigee:
+  ServiceCategories:
+  - api-management
+  - integration
+  ServiceDescription: Hosts Apigee API proxies with policies, analytics, developer portals, and environment groups. Secures north-south traffic with OAuth, mTLS, and quota controls.
+appengine:
+  ServiceCategories:
+  - compute
+  - paas
+  ServiceDescription: Deploys App Engine standard and flexible services with versions, traffic splits, and VPC connectors. Runs autoscaled web apps without managing VMs directly.
+artifact:
+  ServiceCategories:
+  - containers
+  - developer-tools
+  ServiceDescription: Configures Artifact Registry repositories for Docker, Maven, npm, and Python with IAM and cleanup policies. Replaces Container Registry for modern supply-chain workflows.
+beyondcorp:
+  ServiceCategories:
+  - security
+  ServiceDescription: Orchestrates BeyondCorp Enterprise connectors and application resources for zero-trust access. Integrates with Identity-Aware Proxy policies.
+bigquery:
+  ServiceCategories:
+  - analytics
+  ServiceDescription: Manages BigQuery datasets, tables, routines, and reservations for SQL analytics at scale. Supports partitioning, clustering, and IAM data policies.
+bigtable:
+  ServiceCategories:
+  - database
+  ServiceDescription: Runs Cloud Bigtable instances, clusters, and tables for wide-column workloads with low latency. Powers IoT, ads, and personalization use cases.
+binaryauthorization:
+  ServiceCategories:
+  - security
+  - containers
+  ServiceDescription: Enforces deploy-time attestations for GKE and Cloud Run images via attestors and policy rules. Blocks unsigned or vulnerable container images.
+certificatemanager:
+  ServiceCategories:
+  - security
+  - certificates
+  ServiceDescription: Issues and rotates Google-managed TLS certificates with DNS authorization and load balancer bindings. Simplifies HTTPS for multi-tenant hostnames.
+cloud:
+  ServiceCategories:
+  - management-tools
+  - integration
+  ServiceDescription: Aggregates shared controllers and helpers for the GCP provider family. Usually complements focused subpackages rather than direct application use.
+cloudbuild:
+  ServiceCategories:
+  - developer-tools
+  - integration
+  ServiceDescription: Defines Cloud Build triggers, worker pools, and build histories for CI/CD on GCP. Connects to Artifact Registry and Secret Manager for pipelines.
+cloudfunctions:
+  ServiceCategories:
+  - compute
+  - serverless
+  ServiceDescription: Deploys first-generation Cloud Functions with HTTP and background triggers. Prefer Cloud Functions (2nd gen) for new workloads when available.
+cloudfunctions2:
+  ServiceCategories:
+  - compute
+  - serverless
+  ServiceDescription: Runs Cloud Functions (2nd gen) on Cloud Run with concurrency, larger instances, and Eventarc triggers. Ideal for event-driven microservices.
+cloudidentity:
+  ServiceCategories:
+  - identity-access
+  - governance
+  ServiceDescription: Manages Google Workspace / Cloud Identity groups and membership for access control automation. Syncs directory data for IAM bindings.
+cloudplatform:
+  ServiceCategories:
+  - management-tools
+  - governance
+  ServiceDescription: Covers organization, folder, and project-level settings exposed via API for landing zones. Supports org policies and shared billing metadata.
+cloudquotas:
+  ServiceCategories:
+  - management-tools
+  - governance
+  ServiceDescription: Adjusts consumer quota preferences and adjuster requests for service limits. Helps unblock scale-ups for networking and compute SKUs.
+cloudrun:
+  ServiceCategories:
+  - containers
+  - serverless
+  ServiceDescription: Runs fully managed Cloud Run services and jobs with request autoscaling and VPC egress controls. Supports HTTP, gRPC, and Eventarc triggers.
+cloudscheduler:
+  ServiceCategories:
+  - integration
+  - management-tools
+  ServiceDescription: Schedules HTTP and Pub/Sub jobs with cron syntax and retry policies. Ideal for periodic ETL and maintenance hooks.
+cloudtasks:
+  ServiceCategories:
+  - integration
+  - messaging
+  ServiceDescription: Queues asynchronous tasks with rate limits, OIDC headers, and App Engine routing. Decouples bursty workloads from synchronous APIs.
+composer:
+  ServiceCategories:
+  - data-pipelines
+  - orchestration
+  ServiceDescription: Provisions Cloud Composer (Airflow) environments with PyPI packages, networking, and data lineage. Orchestrates data pipelines across BigQuery and GCS.
+compute:
+  ServiceCategories:
+  - compute
+  - management-tools
+  ServiceDescription: Manages Compute Engine VMs, instance groups, disks, forwarding rules, and firewall policies. Core IaaS layer for nearly every GCP architecture.
+config:
+  ServiceCategories:
+  - configuration
+  - management-tools
+  ServiceDescription: Provides ProviderConfig resources and authentication wiring for the GCP family, including workload identity federation and credential sources.
+container:
+  ServiceCategories:
+  - containers
+  ServiceDescription: Registers GKE clusters, node pools, addons, and fleet memberships. Aligns with google_container_* Terraform resources for platform teams.
+containeranalysis:
+  ServiceCategories:
+  - security
+  - containers
+  ServiceDescription: Stores vulnerability scan notes and occurrences for images in Artifact Registry. Feeds policy gates in CI/CD pipelines.
+containerattached:
+  ServiceCategories:
+  - containers
+  - integration
+  ServiceDescription: Attaches non-GCP Kubernetes clusters to Google fleet management for consistent policy and observability. Supports hybrid and multi-cloud footprints.
+containeraws:
+  ServiceCategories:
+  - containers
+  - integration
+  ServiceDescription: Registers AWS-hosted clusters with Anthos/GKE attached clusters APIs for unified fleet operations. Extends Google multi-cloud control planes.
+containerazure:
+  ServiceCategories:
+  - containers
+  - integration
+  ServiceDescription: Registers Azure-hosted Kubernetes clusters for Anthos fleet visibility and config sync. Bridges AKS workloads into Google multi-cloud tooling.
+datacatalog:
+  ServiceCategories:
+  - governance
+  ServiceDescription: Indexes datasets and tags for discoverability with policy tags and lineage hooks. Supports BigQuery column-level governance.
+dataflow:
+  ServiceCategories:
+  - data-pipelines
+  ServiceDescription: Runs Dataflow jobs for batch and streaming Apache Beam pipelines on managed workers. Integrates with Pub/Sub, BigQuery, and Cloud Storage.
+datafusion:
+  ServiceCategories:
+  - data-pipelines
+  - integration
+  ServiceDescription: Hosts visual ETL pipelines in Cloud Data Fusion with wrangler transforms and wrangler macros. Targets analyst-friendly data prep.
+datalossprevention:
+  ServiceCategories:
+  - security
+  - governance
+  ServiceDescription: Defines inspect templates, de-identification transforms, and discovery jobs for sensitive data. Feeds DLP scanning across Storage and BigQuery.
+dataplex:
+  ServiceCategories:
+  - governance
+  - analytics
+  ServiceDescription: Manages Dataplex lakes, zones, and assets for unified metadata and governance. Powers data mesh patterns across BigQuery and GCS.
+dataproc:
+  ServiceCategories:
+  - analytics
+  ServiceDescription: Runs Dataproc clusters for Spark, Hive, and Presto with autoscaling and component gateways. Ideal for ephemeral big data jobs on GCS-backed data lakes.
+datastream:
+  ServiceCategories:
+  - integration
+  - storage
+  ServiceDescription: Replicates Oracle and MySQL changes to BigQuery and Cloud Storage with minimal latency. Supports private connectivity and stream validation.
+developerconnect:
+  ServiceCategories:
+  - developer-tools
+  - integration
+  ServiceDescription: Links GitHub and GitLab repositories to Google Cloud for secure build and deployment insights. Supports developer metrics and policy automation.
+dialogflowcx:
+  ServiceCategories:
+  - machine-learning
+  - integration
+  ServiceDescription: Builds Dialogflow CX agents with flows, intents, and fulfillment webhooks. Powers virtual agents with multi-turn conversation design.
+dns:
+  ServiceCategories:
+  - networking
+  - dns
+  ServiceDescription: Manages Cloud DNS managed zones, records sets, and DNSSEC for public and private zones. Integrates with load balancers and GKE Ingress.
+documentai:
+  ServiceCategories:
+  - machine-learning
+  ServiceDescription: Processes invoices, forms, and contracts with Document AI processors and human review workflows. Extracts structured fields for downstream systems.
+essentialcontacts:
+  ServiceCategories:
+  - governance
+  - management-tools
+  ServiceDescription: Registers org and project contacts for billing, technical, and security notifications. Ensures incidents reach the right on-call rotations.
+eventarc:
+  ServiceCategories:
+  - integration
+  - messaging
+  ServiceDescription: Routes CloudEvents from Pub/Sub, Audit Logs, and third parties to Cloud Run and GKE destinations. Enables event-driven automation without polling.
+filestore:
+  ServiceCategories:
+  - storage
+  ServiceDescription: Provides managed NFS file shares for GKE and Compute Engine with HA tiers. Supports enterprise workloads needing POSIX semantics.
+firebaserules:
+  ServiceCategories:
+  - integration
+  - security
+  ServiceDescription: Defines Firebase security rules for Realtime Database and Storage access patterns. Codifies client-side auth constraints server-side.
+gemini:
+  ServiceCategories:
+  - machine-learning
+  - integration
+  ServiceDescription: Configures Gemini API resources and enterprise settings for generative AI workloads on Vertex. Supports model access policies and usage telemetry.
+gke:
+  ServiceCategories:
+  - containers
+  ServiceDescription: Focuses on GKE-specific resources such as addons and configuration beyond the core container API. Complements google_container_cluster definitions.
+gkehub:
+  ServiceCategories:
+  - containers
+  ServiceDescription: Registers fleet hosts, memberships, and feature configs for multi-cluster services mesh and config sync. Centralizes policy across GKE clusters.
+healthcare:
+  ServiceCategories:
+  - compliance
+  - integration
+  ServiceDescription: Manages Healthcare API datasets, FHIR stores, DICOM stores, and consent resources. Supports HIPAA-aligned clinical data exchange.
+iam:
+  ServiceCategories:
+  - security
+  - identity-access
+  ServiceDescription: Creates IAM roles, service accounts, workload identity pools, and policy bindings. Foundation for least-privilege access across projects.
+iap:
+  ServiceCategories:
+  - security
+  ServiceDescription: Configures Identity-Aware Proxy access controls and tunnel resources for TCP forwarding. Adds context-aware auth in front of internal apps.
+identityplatform:
+  ServiceCategories:
+  - identity-access
+  - integration
+  ServiceDescription: Runs Firebase Authentication / Identity Platform tenants with SAML, OIDC, and MFA. Manages user directories for B2C apps.
+kms:
+  ServiceCategories:
+  - security
+  - encryption
+  ServiceDescription: Manages Cloud KMS keys, key rings, import jobs, and crypto operations. Encrypts data at rest across GCP services with HSM-backed keys.
+logging:
+  ServiceCategories:
+  - observability
+  ServiceDescription: Configures log buckets, sinks, exclusions, and linked BigQuery datasets. Centralizes audit and app logs for SIEM pipelines.
+memcache:
+  ServiceCategories:
+  - database
+  - observability
+  ServiceDescription: Runs Memorystore for Memcached clusters with VPC peering and maintenance windows. Caches session and catalog data with low latency.
+memorystore:
+  ServiceCategories:
+  - database
+  - observability
+  ServiceDescription: Runs Memorystore for Redis clusters with HA, persistence options, and AUTH. Supports Redis Cluster mode for large working sets.
+mlengine:
+  ServiceCategories:
+  - machine-learning
+  ServiceDescription: Legacy AI Platform Training and Prediction resources for model hosting. Prefer Vertex AI for new deployments when possible.
+monitoring:
+  ServiceCategories:
+  - observability
+  ServiceDescription: Defines alerting policies, notification channels, uptime checks, and dashboards in Cloud Monitoring. Feeds SLO burn alerts and incident workflows.
+monolith:
+  ServiceCategories:
+  - management-tools
+  - legacy
+  ServiceDescription: Legacy monolithic GCP provider bundle; deprecated in favor of family subpackages. Migrate to focused API groups for smaller blast radius and faster upgrades.
+networkconnectivity:
+  ServiceCategories:
+  - networking
+  - integration
+  ServiceDescription: Builds Network Connectivity Center spokes, hubs, and VPC spokes for hybrid connectivity. Coordinates Cloud VPN and Interconnect attachments.
+networkmanagement:
+  ServiceCategories:
+  - networking
+  - observability
+  ServiceDescription: Runs Connectivity Tests and latency monitoring to troubleshoot reachability across VPCs and peers. Validates firewall and routing intent.
+networksecurity:
+  ServiceCategories:
+  - security
+  - networking
+  ServiceDescription: Deploys Cloud Armor edge policies, TLS inspection, and secure web gateway resources. Protects HTTP(S) frontends with WAF rules.
+networkservices:
+  ServiceCategories:
+  - networking
+  ServiceDescription: Configures service meshes, gateways, and HTTP routes for multi-cluster traffic management. Aligns with Gateway API style resources.
+notebooks:
+  ServiceCategories:
+  - machine-learning
+  - developer-tools
+  ServiceDescription: Provisions Vertex AI Workbench and legacy Notebook instances with GPUs and VPC-SC perimeter controls. Supports collaborative ML experimentation.
+orgpolicy:
+  ServiceCategories:
+  - governance
+  - security
+  ServiceDescription: Sets organization constraints for allowed services, regions, and resource policies. Enforces guardrails for landing zones.
+osconfig:
+  ServiceCategories:
+  - management-tools
+  ServiceDescription: Applies patch deployments, guest policies, and OS inventory for VMs. Automates CVE remediation across Compute Engine fleets.
+oslogin:
+  ServiceCategories:
+  - identity-access
+  - compute
+  ServiceDescription: Links OS Login profiles and SSH keys to IAM principals for Linux VM access. Replaces shared sudo accounts with audited access.
+privateca:
+  ServiceCategories:
+  - security
+  - certificates
+  ServiceDescription: Runs Certificate Authority Service pools and certificates for private PKI. Issues mTLS certs for mesh and service identities.
+pubsub:
+  ServiceCategories:
+  - integration
+  - messaging
+  ServiceDescription: Manages Pub/Sub topics, subscriptions, schemas, and snapshots with ordering keys and dead lettering. Backbone for event-driven GCP architectures.
+redis:
+  ServiceCategories:
+  - database
+  - observability
+  ServiceDescription: Alias Memorystore Redis resources when exposed separately; provides managed Redis compatible with open clients for cache tiers.
+secretmanager:
+  ServiceCategories:
+  - security
+  - secrets
+  ServiceDescription: Stores secrets with versioning, rotation hooks, and IAM. Integrates with Cloud Run, GKE, and Build for secretless deployments.
+servicenetworking:
+  ServiceCategories:
+  - networking
+  - integration
+  ServiceDescription: Allocates private service connection peering for managed services like Cloud SQL and Vertex. Enables RFC1918 access from VPC consumers.
+sourcerepo:
+  ServiceCategories:
+  - developer-tools
+  - integration
+  ServiceDescription: Hosts Cloud Source Repositories mirrors and IAM for CI triggers. Bridges Git workflows with Cloud Build.
+spanner:
+  ServiceCategories:
+  - database
+  - networking
+  ServiceDescription: Runs Cloud Spanner instances and databases with horizontal scaling and external consistency. Targets globally distributed OLTP workloads.
+sql:
+  ServiceCategories:
+  - database
+  ServiceDescription: Manages Cloud SQL for MySQL, PostgreSQL, and SQL Server with HA, read replicas, and IAM DB auth. Primary relational datastore for apps.
+storage:
+  ServiceCategories:
+  - storage
+  - object-storage
+  ServiceDescription: Configures Cloud Storage buckets, notifications, and IAM for object lifecycle and analytics. Foundational for data lakes and static assets.
+storagetransfer:
+  ServiceCategories:
+  - integration
+  - migration
+  ServiceDescription: Orchestrates Storage Transfer Service jobs between S3, Azure Blob, and GCS. Supports recurring syncs for migration projects.
+tags:
+  ServiceCategories:
+  - governance
+  ServiceDescription: Defines Resource Manager tags and tag values for conditional IAM and org policy bindings. Enables finops chargeback by label dimensions.
+tpu:
+  ServiceCategories:
+  - machine-learning
+  - compute
+  ServiceDescription: Provisions Cloud TPU nodes and slices for JAX/TensorFlow training. Accelerates large ML models with high-bandwidth interconnects.
+vertexai:
+  ServiceCategories:
+  - machine-learning
+  ServiceDescription: Manages Vertex AI datasets, endpoints, models, and batch predictions. Central hub for custom training and feature store integration.
+vpcaccess:
+  ServiceCategories:
+  - networking
+  - serverless
+  ServiceDescription: Creates VPC Access connectors for Cloud Run and Functions to reach private RFC1918 endpoints. Bridges serverless and hybrid networks.
+workflows:
+  ServiceCategories:
+  - integration
+  - management-tools
+  ServiceDescription: Runs Workflows definitions with HTTP, Pub/Sub, and connector steps for orchestration. Lightweight alternative to Dataflow for control-plane automation.

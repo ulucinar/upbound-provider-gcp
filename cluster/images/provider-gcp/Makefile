@@ -58,11 +58,25 @@ BUILD_ONLY ?= false
 STORE_PACKAGES ?= ""
 XPKG_CLEANUP_EXAMPLES_VERSION ?= v0.12.1
 BUILD_TAG ?= oss
+# Optional per-service template vars (ServiceDescription, ServiceCategories) via
+# package/service-metadata.yaml. When SERVICE_METADATA_FILE points at an existing file,
+# crank gets --service-metadata <path>. Set SERVICE_METADATA_FILE empty to skip, e.g.:
+#   make batch-process SERVICE_METADATA_FILE= CROSSPLANE_CLI=/path/to/crank
+SERVICE_METADATA_FILE ?= $(XPKG_DIR)/service-metadata.yaml
 batch-process: $(CROSSPLANE_CLI)
 	@rm -rf $(WORK_DIR)/xpkg-cleaned-examples
 	@GOOS=$(HOSTOS) GOARCH=$(TARGETARCH) go run github.com/upbound/uptest/cmd/cleanupexamples@$(XPKG_CLEANUP_EXAMPLES_VERSION) $(ROOT_DIR)/examples $(WORK_DIR)/xpkg-cleaned-examples || $(FAIL)
 	@$(INFO) Batch processing smaller provider packages for: "$(SUBPACKAGES)"
 	@mkdir -p "$(XPKG_OUTPUT_DIR)/$(PLATFORM)" && \
+	META_FLAG=""; \
+	if [ -n "$(SERVICE_METADATA_FILE)" ]; then \
+		if [ ! -f "$(SERVICE_METADATA_FILE)" ]; then \
+			echo >&2 "SERVICE_METADATA_FILE not found: $(SERVICE_METADATA_FILE)"; \
+			$(FAIL); \
+		else \
+			META_FLAG="--service-metadata $(SERVICE_METADATA_FILE)"; \
+		fi; \
+	fi; \
 	$(CROSSPLANE_CLI) xpkg batch --smaller-providers "$$(tr ' ' ',' <<< "$(SUBPACKAGES)")" \
 		--family-base-image $(BUILD_REGISTRY)/$(PROJECT_NAME) \
 		--platform $(BATCH_PLATFORMS) \
@@ -79,6 +93,7 @@ batch-process: $(CROSSPLANE_CLI)
 		--ignore $(XPKG_IGNORE) \
 		--crd-group-override monolith=* --crd-group-override config=$(CONFIG_CRD_GROUP) \
 		--package-metadata-template $(XPKG_DIR)/crossplane.yaml.tmpl \
+		$$META_FLAG \
 		--template-var XpkgRegOrg=$(CONFIG_DEPENDENCY_REG_ORG) --template-var DepConstraint="$(DEP_CONSTRAINT)" --template-var ProviderName=$(PROVIDER_NAME) --template-var ProviderAuthGroup=$(PROVIDER_AUTH_GROUP) \
 		--template-var Support=Upbound --template-var Verification=Official --template-var BuildTag=$(BUILD_TAG) \
 		--concurrency $(CONCURRENCY) \
