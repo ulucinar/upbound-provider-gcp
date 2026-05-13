@@ -268,6 +268,11 @@ mlengine:
   ServiceCategories:
   - machine-learning
   ServiceDescription: Legacy AI Platform Training and Prediction resources for model hosting. Prefer Vertex AI for new deployments when possible.
+modelarmor:
+  ServiceCategories:
+  - machine-learning
+  - security
+  ServiceDescription: Manages Model Armor templates and floor settings for AI safety and security guardrails. Provides prompt and response sanitization for generative AI workloads.
 monitoring:
   ServiceCategories:
   - observability
