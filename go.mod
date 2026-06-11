@@ -19,7 +19,9 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.37.0
 	github.com/hashicorp/terraform-provider-google v1.20.1-0.20250805162037-2fd0afa09363
 	github.com/pkg/errors v0.9.1
+	github.com/pkoukk/tiktoken-go v0.1.8
 	google.golang.org/grpc v1.79.3
+	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/api v0.35.5
 	k8s.io/apiextensions-apiserver v0.35.5
 	k8s.io/apimachinery v0.35.5
@@ -58,6 +60,7 @@ require (
 	github.com/cncf/xds/go v0.0.0-20251210132809-ee656c7534f5 // indirect
 	github.com/dave/jennifer v1.7.1 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
+	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/emicklei/go-restful/v3 v3.13.0 // indirect
 	github.com/envoyproxy/go-control-plane/envoy v1.36.0 // indirect
 	github.com/envoyproxy/protoc-gen-validate v1.3.0 // indirect
@@ -211,7 +214,6 @@ require (
 	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/code-generator v0.35.5 // indirect
 	k8s.io/component-base v0.35.5 // indirect
 	k8s.io/gengo/v2 v2.0.0-20251215205346-5ee0d033ba5b // indirect
