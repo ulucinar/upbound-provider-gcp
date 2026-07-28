@@ -17,7 +17,6 @@ import (
 
 	"github.com/upbound/provider-gcp/v2/config/cluster"
 	"github.com/upbound/provider-gcp/v2/config/templates"
-	"github.com/upbound/provider-gcp/v2/hack"
 )
 
 // GetProvider returns provider configuration
@@ -53,7 +52,7 @@ func GetProvider(_ context.Context, sdkProvider *schema.Provider, generationProv
 		ujconfig.WithReferenceInjectors([]ujconfig.ReferenceInjector{reference.NewInjector(modulePath)}),
 		ujconfig.WithSkipList(skipList),
 		ujconfig.WithFeaturesPackage("internal/features"),
-		ujconfig.WithMainTemplate(hack.MainTemplate),
+		ujconfig.WithMainTemplate(templates.MainTemplate),
 		ujconfig.WithTerraformProvider(sdkProvider),
 		ujconfig.WithSchemaTraversers(&ujconfig.SingletonListEmbedder{}),
 		ujconfig.WithControllerTemplate(templates.ControllerTemplate),
